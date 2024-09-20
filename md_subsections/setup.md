@@ -2,8 +2,6 @@
 
 ### Where to Type Commands: How to Open a New Shell
 
-
-
 ### Windows
 
 Computers with Windows operating systems do not automatically have a Unix Shell program installed. In this lesson, we encourage you to use an emulator included in Git for Windows, which gives you access to both Bash shell commands and Git. You can obtain Git for Windows <a href="[git_windows_url]">here</a>.
@@ -52,7 +50,7 @@ This page is adapted for systems at Middle Tennessee State University from <a hr
 
 [jumphost_kb_url]: https://help.mtsu.edu/kb?id=kb_article_view&sysparm_article=KB0010238
 [setup_article_url]: https://carpentries-incubator.github.io/hpc-intro/setup.html
-[carpentry_incubator_authors_url]: https://carpentries-incubator.github.io/hpc-intro/CITATION
+[carpentry_incubator_authors_url]: https://carpentries-incubator.github.io/hpc-intro/
 [cc_by_url]: https://creativecommons.org/licenses/by/4.0/
 [git_windows_url]: https://git-scm.com/download/win
 [powershell_url]: https://docs.microsoft.com/en-us/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?view=powershell-7
