@@ -73,8 +73,8 @@
      * Contact HPC Systems Administrator (tgoff@mtsu.edu) for more information and to request access to Computational and Data Science resources.
 * A working jumphost account or VPN Access.
 
-     *  For access via jumphost, see knowledge article <a href="[jumphost_kb_url]">here</a>.
+     *  For access via jumphost, see knowledge article [here](https://help.mtsu.edu/kb?id=kb_article_view&sysparm_article=KB001023).
+
+* Command line experience. If new to the command line, we recommend going through [shell-novice](https://swcarpentry.github.io/shell-novice/).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-[jumphost_kb_url]: https://help.mtsu.edu/kb?id=kb_article_view&sysparm_article=KB001023
