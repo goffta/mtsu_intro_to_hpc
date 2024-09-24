@@ -11,20 +11,11 @@
      * Contact HPC Systems Administrator (tgoff@mtsu.edu) for more information and to request access to Computational and Data Science resources.
 * A working jumphost account or VPN Access.
 
-     *  For access via jumphost, see knowledge article <a href="[jumphost_kb_url]">here</a>.
+     *  For access via jumphost, see knowledge article [here](https://help.mtsu.edu/kb?id=kb_article_view&sysparm_article=KB0010238).
 
-### Initial Setup
-<a name="initial-setup"></a>
-1. Open Terminal application (PuTTY or WSL on Windows, Terminal on MacOS or Linux).
-2. Login to the jumphost or connect to VPN.
-3. Login to babbage.
-   ```sh
-   ssh babbage.mtsu.edu
-   ```
-4. Copy job template from shared directory
-   ```sh
-   cp /home/shared/walker/scripts/slurm/walker.sh .
-   ```
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+---
+
+This page is adapted for systems at Middle Tennessee State University from [Introduction to High-Performance Computing](https://carpentries-incubator.github.io/hpc-intro/) by it's [authors](https://carpentries-incubator.github.io/hpc-intro/setup.html). It is licensed under the [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) 2024.
 
 [jumphost_kb_url]: https://help.mtsu.edu/kb?id=kb_article_view&sysparm_article=KB0010238
