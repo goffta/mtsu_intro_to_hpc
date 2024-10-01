@@ -12,11 +12,10 @@ For a comprehensive list of prerequisites and related guides, see [here](./getti
 - How do I capture the output of a program that is run on a node in the cluster?
 
 ### Objectives
-- Survey system resources using ```nproc```, ```free```, and the slurm queuing system
-- Compare & contrast resources on the local machine, login node, and compute nodes
-- Learn about cluster filesystems using ```df```
-- See ```who``` else is logged in
-- Assess the number of available and occupies compute nodes
+- Submit a simple script to the cluster.
+- Monitor the execution of jobs using command line tools.
+- Inspect the output and error files of your jobs.
+- Find the right place to put large datasets on the cluster.
 
 ## Job Scheduler
 A large HPC system might have thousands of nodes and thousands of users; how can we decide who gets to user what and when? How can we ensure that a task is run with the needed resources and that those resources remain available throughout the scheduled task? This is the purpose of a special piece of software called the *scheduler*. On MTSU's clusters, the Slurm scheduler manages which jobs run where and when.
