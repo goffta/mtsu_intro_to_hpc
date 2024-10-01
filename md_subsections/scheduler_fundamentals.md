@@ -65,8 +65,9 @@ To submit this task to the scheduler, we use ``` sbatch ``` command. This create
 Submitted batch job 14836
 ```
 
-That's all we need to submit a job. Our work is done; the scheduler now takes over and tries to run the job for us. While the job is waiting to run, it goes into a list of jobs called the *queue*. To check on our job's status, we check the qeueu using the command ``` squeue -u yourUsername ```
-```
+That's all we need to submit a job. Our work is done; the scheduler now takes over and tries to run the job for us. While the job is waiting to run, it goes into a list of jobs called the *queue*. To check on our job's status, we check the queue using the command ``` squeue -u yourUsername ```
+
+```bash
 JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
 14836 interactive   example- tgoff R       0:30      1 c1
 ```
@@ -77,7 +78,7 @@ On the login node, the script printed output to the terminal; but now, when ```s
 
 Cluster job output is typically redirected to a file in the directory where you launched it from. Use the ```ls``` command to find the file and the ```cat``` command to read the file.
 
-```
+```bash
 [yourUsername@babbage ~]$ ls
 slurm-14836.out
 
@@ -95,7 +96,7 @@ To illustrate, let's use the ```-J``` option to change the name of the job.
 
 Edit the example-job.sh:
 
-```
+```bash
 [yourUsername@babbage ~]$ nano example-job.sh
 ```
 Add the new slurm directive:
@@ -109,16 +110,16 @@ hostname
 ```
 
 Submit the job and monitor its status:
-```
+```bash
 [yourUsername@babbage ~]$ sbatch example-job.sh
 ```
 ```
 Submitted batch job 14839
 ```
-```
-[tgoff@babbage ~]$ squeue -u yourUsername
+```bash
+[yourUsername@babbage ~]$ squeue -u yourUsername
              JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-             14839 interacti hello-wo    tgoff  R       0:03      1 c1
+             14839 interacti hello-wo    user  R       0:03      1 c1
 ```
 ## Resource Requests
 What about more important changes, such as the number of cores, memory, and time for your jobs? One of the most critical things when working on an HPC system is specifying the resources required to run a job. This allows the scheduler to find the right time and place to schedule your job. If you do not specify the requirements you will likely be stuck with the default resources, which is probably not what you want.
@@ -133,7 +134,59 @@ Please note that just *requesting* these resources won't make your job run any f
 
 ## Cancelling a Job
 
+Sometimes a mistake is made and a job needs to be cancelled. This can be done with the ```scancel``` command. As an example, lets submit a job and then cancel it using it's job number. Before we submit our example-job.sh script, first modify it to extend the walltime so that it will run long enough that we have the opportunity to cancel it (by changing the ```---time``` SBATCH directive).
 
+```bash
+[yourUsername@babbage ~]$ sbatch example-job.sh
+Submitted batch job 14839
+[yourUsername@babbage ~]$ squeue -u yourUsername
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+             14839 interacti hello-wo    user  R       0:03      1 c1
+```
+
+```bash
+[yourUsername@babbage ~]$ scancel 14839
+[yourUsername@babbage ~]$ squeue -u yourUsername
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+```
+
+You can also cancel all of your jobs at once by using the ```-u``` option. This will delete all jobs for your username.
+
+## Other Types of Jobs
+
+So far we've been running jobs in batch mode (non-interactively). Most of your long runs wilil be like this. However, sometimes we need to run jobs interactively. Creating an entire job script might be overkill for small tasks, but the resources required are too great for the login node to handle. A good example of this might be building a genome index for alignment with a tool such as [HISAT2](https://daehwankimlab.github.io/hisat2/). We can run interactive jobs with the ```srun``` command (we also have the ```hpcshell``` shell function (a wrapper around the srun command)).
+
+```srun``` runs a single command on the cluster and then exits. As an example:
+
+```bash
+[yourUsername@babbage ~]$ srun hostname
+c2.babbage.mtsu.edu
+```
+```srun``` (and ```hpcshell```) accepts all of the same options as ```sbatch```; however, instead of specifying these in a script, these options are specified on the command-line when starting a job. To submit a job that uses 2 CPUs, you could use the following command:
+
+```bash
+[yourUsername@babbage ~]$ srun -n 2 echo "This job will use 2 CPUs."
+This job will use 2 CPUs.
+This job will use 2 CPUs.
+```
+Typically, the resulting shell environment will be the same as for sbatch.
+
+## Interactive jobs
+
+Sometimes you'll need more resources and more interaction than the one command srun provides. In this case, you can make use of the ```hpcshell``` shell function wrapper for ```srun```. This will give you a bash prompt on a compute node. 
+
+### Using remote graphics
+
+To see graphical output inside your jobs, you will need to utilize X11 forwarding and have an X11 client on your local machine. To connect to the clusters with this feature enabled, use the ```-Y``` option when you login with the ```ssh``` command. You will need to add this to your jumphost ssh command as well as the ssh command from the jumphost to the cluster login node.
+
+To demonstrate what happens when you create a graphics window on the remote node, you can use the xeyes command. A pair of eyes should pop up (press ```Ctrl-C``` to stop). 
+
+- If you are using a Mac, you must have installed XQuarts (and restarted your computer).
+- If you are using Windows 11, you must have installed XMing as well as set the ```DISPLAY```
+environment variable to point to your Xming server.
+```bash
+export DISPLAY=$HOSTNAME:0.0
+```
 
 ---
 
