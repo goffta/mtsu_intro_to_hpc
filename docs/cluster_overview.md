@@ -43,7 +43,7 @@ Hamilton is a 9-node cluster tailored for research tasks requiring GPUs and spec
 | **Node Name(s)**  | **CPU**                     | **RAM**    | **GPU**         | **VRAM**    | **Special Features**       |
 |-------------------|-----------------------------|------------|-----------------|------------|---------------------------|
 | `c1-8`           | 20 threads, Intel Cascade Lake | 64 GB      | 1x NVIDIA 2080Ti| 11 GB      | General Purpose            |
-| `c9`             | 20 threads, AMD EPYC        | 128 GB     | 1x NVIDIA A100  | 40 GB      | High-Performance GPU       |
+| `c9`             | 20 threads, AMD EPYC        | 128 GB     | 1x NVIDIA A100  | 80 GB      | High-Performance GPU       |
 
 **Scratch Space**: Each node has 1 TB of local NVMe SSD scratch space for temporary job storage.
 
