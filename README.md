@@ -1,80 +1,100 @@
-# Introduction to High Performance Computing at MTSU
+# MTSU Introduction to HPC
 
-<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
-<a name="readme-top"></a>
-<!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Don't forget to give the project a star!
-*** Thanks again! Now go create something AMAZING! :D
--->
+Welcome to the Middle Tennessee State University (MTSU) Introduction to High-Performance Computing (HPC) resources. This repository is designed to assist Computational and Data Science (CDS) faculty and students in effectively utilizing the HPC clusters available at MTSU.
 
+## Table of Contents
 
+- [Prerequisites](#prerequisites)
+- [Cluster Overview](#cluster-overview)
+- [Getting Started](#getting-started)
+- [SLURM Job Scripts](#slurm-job-scripts)
+- [Example Code](#example-code)
+- [Getting Help](#getting-help)
 
-<!-- PROJECT SHIELDS --><!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
-<a name="readme-top"></a>
-<!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Don't forget to give the project a star!
-*** Thanks again! Now go create something AMAZING! :D
--->
+## Prerequisites
 
+Before using the HPC clusters, ensure you have the following:
 
+1. **MTSU Account**:
+   - You must have an active MTSU account and be added to the appropriate user groups to access the clusters.
 
-<!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
+2. **SSH Client**:
+   - Install an SSH client on your local system. Examples:
+     - **Linux/macOS**: Use the built-in `ssh` command.
+     - **Windows**: Use [PuTTY](https://www.putty.org/) or Windows Terminal.
 
-<!-- PROJECT LOGO -->
-<br />
-<div align="center">
-  <p align="left"s>
-    An introductory setup/usage guide for utilizing cluster resources provided by MTSU Computational and Data Science.
-</div>
+3. **VPN Access**:
+   - If you are off-campus, connect to MTSU's VPN to access the cluster head nodes.
 
+4. **Basic Linux Knowledge**:
+   - Familiarity with the Linux command line is essential for effective cluster usage.
 
+## Cluster Overview
 
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#initial-setup">Initial Setup</a></li>
-      </ul>
-    </li>
-    <li><a href="#editing-slurm-submit-script">Editing Slurm Submit Script</a></li>
-      <ul>
-        <li><a href="#">Slurm Parameters</a></li>
-        <li><a href="#apptainer-cmds">Apptainer</a></li>
-        <li><a href="#system-cmds">System Commands</a></li>
-      </ul>
-    <li><a href="#running-a-qiime2-batch-job-non-interactive">Running a Job</a></li>
-  </ol>
-</details>
+For a detailed overview of the HPC clusters, including hardware specifications, available software modules, and storage resources, please refer to the [Cluster Overview](docs/cluster_overview.md) document.
 
-<!-- GETTING STARTED -->
 ## Getting Started
 
-### Prerequisites
+To begin using the HPC resources:
 
-* A working FSA/pipeline account with cluster access. 
-     
-     * Contact HPC Systems Administrator (tgoff@mtsu.edu) for more information and to request access to Computational and Data Science resources.
-* A working jumphost account or VPN Access.
+1. **Accessing the Clusters**:
+   - Use SSH to connect to the cluster head nodes.
+   - Ensure you have the necessary credentials and VPN access if required.
 
-     *  For access via jumphost, see knowledge article [here](https://help.mtsu.edu/kb?id=kb_article_view&sysparm_article=KB001023).
+2. **Loading Modules**:
+   - The clusters utilize the Environment Modules system.
+   - Load the required modules for your workflow using the `module load` command.
+   - For Python environments, it is recommended to use the `miniconda` module to manage dependencies.
 
-* Command line experience. If new to the command line, we recommend going through [shell-novice](https://swcarpentry.github.io/shell-novice/).
+3. **Submitting Jobs**:
+   - Write SLURM job scripts to define your computational tasks.
+   - Submit jobs using the `sbatch` command.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+## SLURM Job Scripts
+
+Pre-configured SLURM job scripts are available to assist you in submitting jobs efficiently. These scripts are located in the `/projects/examples/scripts` directory on the cluster. The available scripts include:
+
+- `basic_cpu.slurm`: Template for basic CPU jobs.
+- `array_job.slurm`: Template for job arrays.
+- `gpu_job.slurm`: Template for GPU-accelerated jobs.
+- `high_mem.slurm`: Template for high-memory jobs.
+
+To use these scripts:
+
+1. Copy the desired script to your working directory:
+   ```bash
+   cp /projects/examples/scripts/basic_cpu.slurm ~/my_jobs/
+
+2. Modify the script parameters as needed.
+
+3. Submit the job:
+   ```bash
+   sbatch ~/my_jobs/basic_cpu.slurm
+
+## Example Code
+
+Example code is provided to demonstrate various computational tasks:
+
+- **Python**:
+  - CPU-based matrix multiplication.
+  - GPU-accelerated TensorFlow model training.
+
+- **R**:
+  - Parallel processing using the `foreach` and `doParallel` packages.
+
+These examples are located in the `/projects/examples` directory on the cluster:
+
+- Python scripts: `/projects/examples/python/`
+- R scripts: `/projects/examples/r/`
+
+Feel free to copy and modify these scripts to suit your research needs.
+
+## Getting Help
+
+For assistance with HPC resources:
+
+- **Email**: [tgoff@mtsu.edu](mailto:tgoff@mtsu.edu)
+- **Documentation**: Additional documentation is available at [help.mtsu.edu/kb](https://help.mtsu.edu/kb) under the Computational Science Systems Knowledge Base.
+
+---
+
