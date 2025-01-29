@@ -2,7 +2,23 @@
 
 This document provides a systematic guide to testing and using SLURM for job submissions. It includes basic and advanced examples to ensure users are familiar with submitting, running, and troubleshooting jobs on the cluster.
 
+## Table of Contents
+
+1. [Simple Job Submission](#1-simple-job-submission)
+2. [Interactive Job](#2-interactive-job)
+3. [Parallel Job with Multiple Tasks](#3-parallel-job-with-multiple-tasks)
+4. [Requesting Specific Resources](#4-requesting-specific-resources)
+5. [GPU Job (Optional)](#5-gpu-job-optional)
+6. [Job Arrays](#6-job-arrays)
+7. [High Memory Job](#7-high-memory-job)
+8. [Python Job Example](#8-python-job-example)
+9. [C Job Example](#9-c-job-example)
+10. [R Job Example](#10-r-job-example)
+11. [Troubleshooting and Monitoring](#troubleshooting-and-monitoring)
+
+
 ---
+
 
 ## 1. Simple Job Submission
 
@@ -166,6 +182,103 @@ sbatch high_mem.slurm
 ### **Expected Behavior**
 - The output displays the memory available on the allocated high-memory node.
 - No errors should appear in `high_mem_error.txt`.
+
+---
+
+## 8. Python Job Example
+
+### **Python Script: `example.py`**
+```python
+# example.py
+import os
+
+print("SLURM_JOB_ID:", os.environ.get("SLURM_JOB_ID"))
+print("SLURM_NODELIST:", os.environ.get("SLURM_NODELIST"))
+print("Hello from Python!")
+```
+
+### **SLURM Script: `python_job.slurm`**
+```bash
+#!/bin/bash
+#SBATCH --job-name=python_job
+#SBATCH --output=python_output.txt
+#SBATCH --error=python_error.txt
+#SBATCH --time=00:05:00
+#SBATCH --partition=interactive-cpu
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=1
+
+module load miniconda  # Load Miniconda module
+source activate base  # Activate base environment
+
+python example.py
+```
+
+---
+
+## 9. C Job Example
+
+### **C Program: `example.c`**
+```c
+// example.c
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    char *job_id = getenv("SLURM_JOB_ID");
+    char *node_list = getenv("SLURM_NODELIST");
+
+    printf("SLURM_JOB_ID: %s\\n", job_id);
+    printf("SLURM_NODELIST: %s\\n", node_list);
+    printf("Hello from C!\\n");
+    return 0;
+}
+```
+
+### **SLURM Script: `c_job.slurm`**
+```bash
+#!/bin/bash
+#SBATCH --job-name=c_job
+#SBATCH --output=c_output.txt
+#SBATCH --error=c_error.txt
+#SBATCH --time=00:05:00
+#SBATCH --partition=interactive-cpu
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=1
+
+./example
+```
+
+---
+
+## 10. R Job Example
+
+### **R Script: `example.R`**
+```r
+# example.R
+job_id <- Sys.getenv("SLURM_JOB_ID")
+node_list <- Sys.getenv("SLURM_NODELIST")
+
+cat("SLURM_JOB_ID:", job_id, "\\n")
+cat("SLURM_NODELIST:", node_list, "\\n")
+cat("Hello from R!\\n")
+```
+
+### **SLURM Script: `r_job.slurm`**
+```bash
+#!/bin/bash
+#SBATCH --job-name=r_job
+#SBATCH --output=r_output.txt
+#SBATCH --error=r_error.txt
+#SBATCH --time=00:05:00
+#SBATCH --partition=interactive-cpu
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=1
+
+module load R  # Load R module
+Rscript example.R
+```
+
 
 ---
 
