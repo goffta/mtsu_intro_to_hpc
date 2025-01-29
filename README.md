@@ -10,6 +10,8 @@ Welcome to the Middle Tennessee State University (MTSU) Introduction to High-Per
 - [SLURM Job Scripts](#slurm-job-scripts)
 - [Example Code](#example-code)
 - [Getting Help](#getting-help)
+- [HPC Frequently Asked Questions (FAQ)](#additional-documentation)
+
 
 ## Prerequisites
 
@@ -101,4 +103,12 @@ For assistance with HPC resources:
 - **Documentation**: Additional documentation is available at [help.mtsu.edu/kb](https://help.mtsu.edu/kb) under the Computational Science Systems Knowledge Base.
 
 ---
+
+## Additional Documentation
+
+For more details on HPC cluster usage, SLURM job management, and troubleshooting, see the **HPC FAQ**:
+
+- [HPC Frequently Asked Questions (FAQ)](docs/hpc_faq.mdhpc_faq.md)
+
+--
 
