@@ -143,6 +143,32 @@ sbatch array_job.slurm
 
 ---
 
+## 7. High Memory Job
+
+### **Script: `high_mem.slurm`**
+```bash
+#!/bin/bash
+#SBATCH --job-name=high_mem_test
+#SBATCH --output=high_mem_output.txt
+#SBATCH --error=high_mem_error.txt
+#SBATCH --mem=128G
+#SBATCH --time=00:30:00
+#SBATCH --partition=research-bigmem
+
+free -h
+```
+
+### **Command to Submit**
+```bash
+sbatch high_mem.slurm
+```
+
+### **Expected Behavior**
+- The output displays the memory available on the allocated high-memory node.
+- No errors should appear in `high_mem_error.txt`.
+
+---
+
 ## Troubleshooting and Monitoring
 
 ### **Checking Job Status**
