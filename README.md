@@ -71,6 +71,10 @@ To use these scripts:
    ```bash
    sbatch ~/my_jobs/basic_cpu.slurm
 
+## SLURM Job Submission Guide
+Detailed examples for submitting SLURM jobs can be found in [SLURM Job Submission Examples](docs/slurm_job_examples.md).
+
+
 ## Example Code
 
 Example code is provided to demonstrate various computational tasks:
