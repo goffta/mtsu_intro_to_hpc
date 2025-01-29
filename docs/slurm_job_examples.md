@@ -14,7 +14,10 @@ This document provides a systematic guide to testing and using SLURM for job sub
 8. [Python Job Example](#8-python-job-example)
 9. [C Job Example](#9-c-job-example)
 10. [R Job Example](#10-r-job-example)
-11. [Troubleshooting and Monitoring](#troubleshooting-and-monitoring)
+11. [TensorFlow GPU Job](#11-tensorflow-gpu-job)
+12. [PyTorch GPU Job](#12-pytorch-gpu-job)
+13. [Troubleshooting and Monitoring](#13-troubleshooting-and-monitoring)
+
 
 
 ---
@@ -284,6 +287,88 @@ cat("Hello from R!\\n")
 
 module load R  # Load R module
 Rscript example.R
+```
+
+## 11. TensorFlow GPU Job
+
+### **Script: `tensorflow_job.slurm`**
+```bash
+#!/bin/bash
+#SBATCH --job-name=tensorflow_gpu_test
+#SBATCH --output=tensorflow_output.txt
+#SBATCH --error=tensorflow_error.txt
+#SBATCH --gres=gpu:1
+#SBATCH --time=01:00:00
+#SBATCH --partition=research-gpu
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=4
+#SBATCH --mem=16G
+
+module load cuda/12.2
+module load miniconda
+source activate /opt/ohpc/pub/apps/miniconda/envs/tensorflow-2.15-py3.9-gpu
+
+python tensorflow_test.py
+```
+
+### **Script: `tensorflow_test.py`**
+```python
+import tensorflow as tf
+
+print("TensorFlow Version:", tf.__version__)
+print("CUDA Available:", tf.config.list_physical_devices('GPU'))
+
+if tf.config.list_physical_devices('GPU'):
+    print("GPU Device Name:", tf.config.list_physical_devices('GPU')[0].name)
+
+    with tf.device('/GPU:0'):
+        a = tf.constant([[1.0, 2.0], [3.0, 4.0]])
+        b = tf.constant([[5.0, 6.0], [7.0, 8.0]])
+        c = tf.matmul(a, b)
+        print("Matrix multiplication result on GPU:\n", c.numpy())
+else:
+    print("No GPU detected. Running on CPU.")
+```
+
+---
+
+## 12. PyTorch GPU Job
+
+### **Script: `pytorch_job.slurm`**
+```bash
+#!/bin/bash
+#SBATCH --job-name=pytorch_gpu_test
+#SBATCH --output=pytorch_output.txt
+#SBATCH --error=pytorch_error.txt
+#SBATCH --gres=gpu:1
+#SBATCH --time=01:00:00
+#SBATCH --partition=research-gpu
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=4
+#SBATCH --mem=16G
+
+module load cuda/12.2
+module load miniconda
+source activate /opt/ohpc/pub/apps/miniconda/envs/pytorch-2.1-py3.9-gpu
+
+python pytorch_test.py
+```
+
+### **Script: `pytorch_test.py`**
+```python
+import torch
+
+print("PyTorch Version:", torch.__version__)
+print("CUDA Available:", torch.cuda.is_available())
+
+if torch.cuda.is_available():
+    print("GPU Device Name:", torch.cuda.get_device_name(0))
+    a = torch.tensor([1.0, 2.0, 3.0]).cuda()
+    b = torch.tensor([4.0, 5.0, 6.0]).cuda()
+    c = a + b
+    print("Tensor computation result on GPU:", c)
+else:
+    print("No GPU detected. Running on CPU.")
 ```
 
 
