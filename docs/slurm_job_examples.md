@@ -235,6 +235,13 @@ int main() {
 }
 ```
 
+### **Compilation Command**
+Before submitting the job, compile the C code using:
+```bash
+gcc -o example example.c
+```
+
+
 ### **SLURM Script: `c_job.slurm`**
 ```bash
 #!/bin/bash
