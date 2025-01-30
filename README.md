@@ -108,7 +108,7 @@ For assistance with HPC resources:
 
 For more details on HPC cluster usage, SLURM job management, and troubleshooting, see the **HPC FAQ**:
 
-- [HPC Frequently Asked Questions (FAQ)](docs/hpc_faq.mdhpc_faq.md)
+- [HPC Frequently Asked Questions (FAQ)](docs/hpc_faq.md)
 
 --
 
