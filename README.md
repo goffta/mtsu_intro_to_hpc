@@ -25,8 +25,12 @@ Before using the HPC clusters, ensure you have the following:
      - **Linux/macOS**: Use the built-in `ssh` command.
      - **Windows**: Use [PuTTY](https://www.putty.org/) or Windows Terminal.
 
-3. **VPN Access**:
-   - If you are off-campus, connect to MTSU's VPN to access the cluster head nodes.
+3. At least one of the following if off campus:
+   - **Jumphost Access**:
+      - This must be requested via ITD Help Desk. More information at https://help.mtsu.edu/sp
+   - **VPN Access**:
+      - This will likely only be available to faculty/staff.
+   - Note: If on campus, you can directly ssh to cluster resources. WiFi still requires use of VPN or jumphost.
 
 4. **Basic Linux Knowledge**:
    - Familiarity with the Linux command line is essential for effective cluster usage.
