@@ -7,6 +7,7 @@ Welcome to the Middle Tennessee State University (MTSU) Introduction to High-Per
 - [Prerequisites](#prerequisites)
 - [Cluster Overview](#cluster-overview)
 - [Getting Started](#getting-started)
+- [File Transfers](#file-transfer)
 - [SLURM Job Scripts](#slurm-job-scripts)
 - [Example Code](#example-code)
 - [Getting Help](#getting-help)
@@ -55,6 +56,10 @@ To begin using the HPC resources:
 3. **Submitting Jobs**:
    - Write SLURM job scripts to define your computational tasks.
    - Submit jobs using the `sbatch` command.
+
+## File Transfer
+
+Detailed commands/guide for remote file transfer are located [here](docs/file_transfer.md).
 
 ## SLURM Job Scripts
 
