@@ -8,8 +8,9 @@ This FAQ provides answers to common questions about using the MTSU HPC cluster, 
 
 1. [General Cluster Usage](#1-general-cluster-usage)
 2. [SLURM Job Submission](#2-slurm-job-submission)
-3. [GPU-Enabled TensorFlow and PyTorch Environments](#3-gpu-enabled-tensorflow-and-pytorch-environments)
-4. [OnDemand Issues and Workarounds](#4-ondemand-issues-and-workarounds)
+3. [Python Environment Setup (with miniconda)](#3-python-environment-setup)
+4. [GPU-Enabled TensorFlow and PyTorch Environments](#4-gpu-enabled-tensorflow-and-pytorch-environments)
+5. [OnDemand Issues and Workarounds](#5-ondemand-issues-and-workarounds)
 
 ---
 
@@ -80,7 +81,11 @@ hpcshell --time=01:00:00 --ntasks=1 --cpus-per-task=1
 
 ---
 
-## 3. GPU-Enabled TensorFlow and PyTorch Environments
+## 3. Python Environment Setup
+
+A detailed guide for python environment setup (with miniconda) can be found [here](python_envs).
+
+## 4. GPU-Enabled TensorFlow and PyTorch Environments
 
 ### **Preconfigured Shared Environments**
 *Note:* The base environments for TensorFlow and PyTorch are currently only available on the **Babbage** cluster but will be added to the **Hamilton** cluster soon.
@@ -133,7 +138,7 @@ print("CUDA available:", torch.cuda.is_available())
 
 ---
 
-## 4. OnDemand Issues and Workarounds
+## 5. OnDemand Issues and Workarounds
 
 ### **Extra Spaces or Newlines When Pasting into Web-Terminal**
 When copying from Windows-based systems into Open OnDemand’s web-based terminal, extra spaces or newlines may appear. This is due to how Windows handles clipboard formatting.
