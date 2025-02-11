@@ -2,6 +2,8 @@
 
 This document provides a systematic guide to testing and using SLURM for job submissions. It includes basic and advanced examples to ensure users are familiar with submitting, running, and troubleshooting jobs on the cluster.
 
+** Note: These scripts were written and designed to be used on the babbage cluster (babbage.mtsu.edu). They can be adapted for use on other clusters (hamilton, etc), but partition names and module versions will be different.
+
 ## Table of Contents
 
 1. [Simple Job Submission](#1-simple-job-submission)
