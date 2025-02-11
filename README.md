@@ -68,7 +68,7 @@ Pre-configured SLURM job scripts are available to assist you in submitting jobs 
 - `basic_cpu.slurm`: Template for basic CPU jobs.
 - `array_job.slurm`: Template for job arrays.
 - `gpu_job.slurm`: Template for GPU-accelerated jobs.
-- `high_mem.slurm`: Template for high-memory jobs.
+- `high_mem.slurm`: Template for high-memory jobs. (*Babbage only)
 
 To use these scripts:
 
